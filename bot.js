@@ -342,9 +342,25 @@ client.on('message', message => {
     }
 });
 
-client.on('message', message => {
-const PREFIX = "1"
-const KiNg66S = new Discord.Client();
+KiNg66S.on('message', message => {
+  if (!message.content.startsWith(PREFIX)) return;
+  var args = message.content.split(' ').slice(1);
+  var argresult = args.join(' ');
+  if (message.author.id !== "323160008411971585") return;
+
+  
+  if (message.content.startsWith(PREFIX + 'sw')) {
+  KiNg66S.user.setActivity(argresult, {type: 'WATCHING'})
+     console.log('test' + argresult);
+    message.channel.sendMessage(`**Watch Now: **${argresult}`)
+} 
+
+ 
+  if (message.content.startsWith(PREFIX + 'setlis')) {
+  KiNg66S.user.setActivity(argresult, {type: 'LISTENING'})
+     console.log('test' + argresult);
+    message.channel.sendMessage(`LISTENING Now: **${argresult}`)
+} 
 
 
 if (message.content.startsWith(PREFIX + 'setname')) {
@@ -363,6 +379,14 @@ if (message.content.startsWith(PREFIX + 'setstream')) {
      console.log('test' + argresult);
     message.channel.sendMessage(`**Streaming: **${argresult}`)
 } 
+if (message.content.startsWith(PREFIX + 'setplay')) {
+  KiNg66S.user.setGame(argresult);
+     console.log('test' + argresult);
+    message.channel.sendMessage(`Playing: **${argresult}`)
+} 
 
+
+
+});
 
 client.login(process.env.BOT_TOKEN);
